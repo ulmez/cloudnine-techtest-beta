@@ -1,0 +1,99 @@
+@font-face {
+    font-family: millerBannerLight;
+    src: url(../../../fonts/MillerBannerLight.otf);
+}
+
+.salong-list-page.type-header {
+  font-family: millerBannerLight;
+  font-size: 22px;
+}
+
+.salong-list-page.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.salong-list-page.line {
+  border-bottom: 0.5px solid #B69F58;
+}
+
+.salong-list-page.icon-design {
+  font-size: 40px;
+  line-height: 50px;
+  color: #B69F58;
+  -webkit-text-stroke: 2px white;
+}
+
+.salong-list-page.test-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.salong-list-page.hide{
+  max-height: 0px;
+   -webkit-transition: max-height .3s ease;
+   -moz-transition: max-height .3s ease;
+   -o-transition: max-height .3s ease;
+   -ms-transition: max-height .3s ease;
+   transition: max-height .3s ease;
+}
+.salong-list-page.show{
+  max-height: 800px;
+    -webkit-transition: max-height 1s ease;
+   -moz-transition: max-height 1s ease;
+   -o-transition: max-height 1s ease;
+   -ms-transition: max-height 1s ease;
+   transition: max-height 1s ease;
+}
+
+.salong-list-page.option-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.salong-list-page.filter-checkbox-container {
+  padding-top: 10px;
+}
+
+.salong-list-page.overflow-hidden {
+  overflow: hidden;
+}
+
+.salong-list-page.padding-10-left {
+  padding-left: 10px;
+}
+
+.salong-list-page.height-10-pixel {
+  height: 10px;
+}
+
+.salong-list-page.icon-arrow-vertical-design {
+  font-size: 23px;
+  line-height: 35px;
+  color: #B69F58;
+  -webkit-text-stroke: 1px white;
+}
+
+.salong-list-page.icon-arrow-vertical-design-collapsed {
+  font-size: 23px;
+  line-height: 10px;
+  color: #B69F58;
+  -webkit-text-stroke: 1px white;
+}
+
+.salong-list-page.icon-star-design {
+  font-size: 10px;
+  /*line-height: 10px;*/
+  color: #B69F58;
+  /*-webkit-text-stroke: 1px white;*/
+}
