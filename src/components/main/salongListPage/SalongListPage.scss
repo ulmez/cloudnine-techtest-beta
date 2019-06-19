@@ -36,7 +36,7 @@
   overflow: hidden;
 }
 
-.salong-list-page.hide{
+.salong-list-page.hide {
   max-height: 0px;
    -webkit-transition: max-height .3s ease;
    -moz-transition: max-height .3s ease;
@@ -44,7 +44,7 @@
    -ms-transition: max-height .3s ease;
    transition: max-height .3s ease;
 }
-.salong-list-page.show{
+.salong-list-page.show {
   max-height: 800px;
     -webkit-transition: max-height 1s ease;
    -moz-transition: max-height 1s ease;

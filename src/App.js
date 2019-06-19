@@ -7,6 +7,7 @@ import './App.scss';
 import SecondPage from './components/secondPage/SecondPage';
 import FirstPage from './components/firstPage/FirstPage';
 import SalongListPage from './components/main/salongListPage/SalongListPage';
+import SalongInfoPage from './components/main/salongInfoPage/SalongInfoPage';
 
 class App extends Component {
   constructor(props) {
@@ -34,9 +35,11 @@ class App extends Component {
     return (
       <div>
         {/*<div>
-          <Link to="/">First</Link><br />
-          <Link to="/second">Second</Link>
-        </div>
+          <Link to="/first">First</Link><br />
+          <Link to="/second">Second</Link><br />
+          <Link to="/salonglist">Salong list</Link><br />
+          <Link to="/salonginfo">Salong info</Link>
+        </div>*/}
         <Route render={({location}) => (
           <TransitionGroup>
             <CSSTransition
@@ -45,15 +48,18 @@ class App extends Component {
               classNames={'fade'}
             >
               <Switch location={location}>
-                  <Route exact path="/" component={FirstPage} />
-                  <Route exact path="/second" component={SecondPage} />
+              <Route exact path="/first" component={FirstPage} />
+                <Route exact path="/second" component={SecondPage} />
+                <Route exact path="/salonglist" component={SalongListPage} />
+                <Route exact path="/salonginfo" component={SalongInfoPage} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
-        )} />*/}
-        <Switch>
+        )} />
+        {/*<Switch>
             <Route exact path="/salonglist" component={SalongListPage} />
-        </Switch>
+            <Route exact path="/salonginfo" component={SalongInfoPage} />
+        </Switch>*/}
       </div>
     );
   }

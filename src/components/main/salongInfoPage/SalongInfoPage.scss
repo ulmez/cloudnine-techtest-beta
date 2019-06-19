@@ -1,0 +1,62 @@
+@font-face {
+    font-family: millerBannerLight;
+    src: url(../../../fonts/MillerBannerLight.otf);
+}
+
+.salong-info-page.type-header {
+    font-family: millerBannerLight;
+    font-size: 22px;
+  }
+
+.salong-info-page.icon-design {
+    font-size: 23px;
+    line-height: 10px;
+    color: #B69F58;
+    -webkit-text-stroke: 1px white;
+}
+
+.salong-info-page.icon-design-bigger {
+    font-size: 40px;
+    line-height: 50px;
+    color: white;
+    -webkit-text-stroke: 2px black;
+  }
+
+  .salong-info-page.hide {
+    max-height: 0px;
+     -webkit-transition: max-height .3s ease;
+     -moz-transition: max-height .3s ease;
+     -o-transition: max-height .3s ease;
+     -ms-transition: max-height .3s ease;
+     transition: max-height .3s ease;
+}
+
+  .salong-info-page.show {
+    max-height: 800px;
+      -webkit-transition: max-height 1s ease;
+     -moz-transition: max-height 1s ease;
+     -o-transition: max-height 1s ease;
+     -ms-transition: max-height 1s ease;
+     transition: max-height 1s ease;
+  }
+
+  .salong-info-page.hide{
+    max-height: 0px;
+     -webkit-transition: max-height .3s ease;
+     -moz-transition: max-height .3s ease;
+     -o-transition: max-height .3s ease;
+     -ms-transition: max-height .3s ease;
+     transition: max-height .3s ease;
+  }
+  .salong-info-page.show{
+    max-height: 800px;
+      -webkit-transition: max-height 1s ease;
+     -moz-transition: max-height 1s ease;
+     -o-transition: max-height 1s ease;
+     -ms-transition: max-height 1s ease;
+     transition: max-height 1s ease;
+  }
+
+  .salong-info-page.overflow-hidden {
+    overflow: hidden;
+  }

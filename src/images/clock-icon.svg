@@ -1,0 +1,24 @@
+
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M0.267857143,7.23214286 C0.267857143,10.7775 3.15107143,13.6607143 6.69642857,13.6607143 C10.2417857,13.6607143 13.125,10.7775 13.125,7.23214286 C13.125,3.68571429 10.2417857,0.803571429 6.69642857,0.803571429 C3.15107143,0.803571429 0.267857143,3.68571429 0.267857143,7.23214286 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="En-Salong" transform="translate(-15.000000, -382.000000)">
+            <g id="Page-1" transform="translate(15.000000, 381.000000)">
+                <g id="Group-3" transform="translate(0.000000, 0.535714)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <polygon id="Stroke-1" stroke="#202020" stroke-width="0.5" mask="url(#mask-2)" points="-15.8035714 304.017857 385.982143 304.017857 385.982143 -410.625 -15.8035714 -410.625"></polygon>
+                </g>
+                <g id="Group-10" transform="translate(0.000000, 0.535714)" stroke="#202020" stroke-width="0.5">
+                    <path d="M6.69642857,0.803571429 C3.15107143,0.803571429 0.267857143,3.68571429 0.267857143,7.23214286 C0.267857143,10.7775 3.15107143,13.6607143 6.69642857,13.6607143 C10.2417857,13.6607143 13.125,10.7775 13.125,7.23214286 C13.125,3.68571429 10.2417857,0.803571429 6.69642857,0.803571429" id="Stroke-4"></path>
+                    <path d="M6.69642857,7.23214286 L6.69642857,3.14357143" id="Stroke-6" stroke-linecap="round"></path>
+                    <path d="M9.27289286,9.80817857 L6.69610714,7.23246429" id="Stroke-8" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

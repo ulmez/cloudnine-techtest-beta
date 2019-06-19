@@ -1,0 +1,23 @@
+
+<svg width="34px" height="30px" viewBox="0 0 34 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M341.640789,31 C343.075637,31 344.513002,31.5755607 345.62415,32.7384226 L347.61583,34.8262629 C347.827997,35.0504493 348.181887,35.0602329 348.406073,34.8480666 C348.413621,34.8410782 348.421168,34.8335308 348.428156,34.8262629 L350.411171,32.7557537 C352.633468,30.43003 356.146932,30.43003 358.369228,32.7557537 C360.591524,35.0817571 360.591524,38.8336639 358.369228,41.1593877 C354.91782,44.7712479 351.468929,48.3881398 348.017521,52 L337.666093,41.1507221 C335.445474,38.822203 335.443797,35.0641464 337.666093,32.7384226 C338.777241,31.5755607 340.20594,31 341.640789,31 Z" id="path-1"></path>
+        <filter x="-31.2%" y="-26.2%" width="162.4%" height="172.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="En-Salong" transform="translate(-331.000000, -28.000000)">
+            <g id="Page-1-Copy">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use stroke="#FFFFFF" stroke-width="1" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
