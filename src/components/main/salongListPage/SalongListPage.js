@@ -188,9 +188,11 @@ class SalongListPage extends Component {
         }
     }
 
-    getToOtherPage() {
+    getToOtherPage(item) {
         // console.log('Test');
-        this.props.history.push("/salonginfo");
+        // this.props.history.push("/salonginfo");
+        this.props.history.push("/salonginfo", { ...item });
+        // const state = this.props.location.state
     }
 
     render() {
@@ -273,7 +275,7 @@ class SalongListPage extends Component {
                                     <div style={{fontWeight: '400'}}>{salong.price} kr</div>
                                     <div style={{fontSize: '13px', color: '#656565', paddingTop: '10px'}}>{salong.time}</div>
                                 </div>
-                                <div className="salong-list-page icon-arrow-vertical-design" style={{paddingLeft: '20px', paddingTop: '15px'}}>{/*<Link to="/salonginfo">*/}<span className="fa fa-angle-right" onClick={this.getToOtherPage}></span>{/*</Link>*/}</div>
+                                <div className="salong-list-page icon-arrow-vertical-design" style={{paddingLeft: '20px', paddingTop: '15px'}}>{/*<Link to="/salonginfo">*/}<span className="fa fa-angle-right" onClick={() => this.getToOtherPage(salong)}></span>{/*</Link>*/}</div>
                             </div>
                             </div>
                             </div>
@@ -285,7 +287,7 @@ class SalongListPage extends Component {
                 {this.state.loading && <div style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)'}}>
                     <CircleLoader
                         sizeUnit={"px"}
-                        size={50}
+                        size={150}
                         color={'#B69F58'}
                         loading={this.state.loading}
                     />
