@@ -27,7 +27,8 @@ class SalongInfoPage extends Component {
                 saturday: 'Lördag',
                 sunday: 'Söndag'
             },
-            gradeIcons: []
+            gradeIcons: [],
+            filterAngleDown: true
         };
 
         this.toggleFilters = this.toggleFilters.bind(this);
@@ -44,6 +45,19 @@ class SalongInfoPage extends Component {
 
     toggleFilters() {
         // console.log('Hello');
+        if(this.state.filterAngleDown) {
+            this.setState({
+                filterAngleDown: false
+            });
+        }
+        else {
+            setTimeout(() => {
+                this.setState({
+                    filterAngleDown: true
+                });
+            }, 200);
+        }
+
         if(this.state.filtersVisible) {
             this.setState({
                 filtersVisible: false
@@ -99,7 +113,7 @@ class SalongInfoPage extends Component {
                 <div style={{border: '0px solid black', padding: '10px'}}>
                     <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={mapMarkerAlt} alt="Map-marker-alt" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{this.props.location.state.address.street} {this.props.location.state.address.street_number}, {this.props.location.state.address.postcode} {this.props.location.state.address.city}</span></div>
                     <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
-                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={clockIcon} alt="Clock-icon" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span><span onClick={this.toggleFilters} className="salong-info-page icon-design fa fa-angle-down" style={{border: '0px solid black', display: 'table-cell', verticalAlign: 'middle', paddingLeft: '10px'}}></span></div>
+                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={clockIcon} alt="Clock-icon" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span><span onClick={this.toggleFilters} className={this.state.filterAngleDown ? 'salong-info-page icon-design fa fa-angle-down' : 'salong-info-page icon-design fa fa-angle-up' } style={{border: '0px solid black', display: 'table-cell', verticalAlign: 'middle', paddingLeft: '10px'}}></span></div>
                     <div className={this.state.filtersVisible ? 'salong-info-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                         <div style={{paddingTop: '5px'}}>
                             {Object.keys(this.props.location.state.opening_time).map((day) => (

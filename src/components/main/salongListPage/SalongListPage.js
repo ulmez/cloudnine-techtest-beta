@@ -83,7 +83,9 @@ class SalongListPage extends Component {
                 type: {
                     text: ''
                 }
-            }
+            },
+            typeAngleDown: true,
+            priceAngleDown: true
         };
 
         this.toggleFilters = this.toggleFilters.bind(this);
@@ -122,6 +124,19 @@ class SalongListPage extends Component {
     }
 
     togglePrice() {
+        if(this.state.priceAngleDown) {
+            this.setState({
+                priceAngleDown: false
+            });
+        }
+        else {
+            setTimeout(() => {
+                this.setState({
+                    priceAngleDown: true
+                });
+            }, 200);
+        }
+
         if(this.state.priceVisible) {
             this.setState({
                 priceVisible: false
@@ -135,6 +150,19 @@ class SalongListPage extends Component {
     }
 
     toggleType() {
+        if(this.state.typeAngleDown) {
+            this.setState({
+                typeAngleDown: false
+            });
+        }
+        else {
+            setTimeout(() => {
+                this.setState({
+                    typeAngleDown: true
+                });
+            }, 200);
+        }
+        
         if(this.state.typeVisible) {
             this.setState({
                 typeVisible: false
@@ -238,7 +266,7 @@ class SalongListPage extends Component {
         // console.log(this.state.filters);
 
         const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
-        
+
         filtersTemp.type = {
             text: item.textEng
         };
@@ -354,7 +382,7 @@ class SalongListPage extends Component {
                                 <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
                                 <div className="salong-list-page option-container">
                                     <div>{this.state.selectedTypeOption.text}</div>
-                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className="fa fa-angle-down" onClick={this.toggleType}></span></div>
+                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.typeAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.toggleType}></span></div>
                                 </div>
                                 <div className={this.state.typeVisible ? 'salong-list-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                                     {this.state.typeOptionTexts.map((typeOption) => (
@@ -369,7 +397,7 @@ class SalongListPage extends Component {
                                 <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
                                 <div className="salong-list-page option-container">
                                     <div>{this.state.selectedPriceOption.text}</div>
-                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className="fa fa-angle-down" onClick={this.togglePrice}></span></div>
+                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.priceAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.togglePrice}></span></div>
                                 </div>
                                 <div className={this.state.priceVisible ? 'salong-list-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                                     {this.state.priceOptionTexts.map((priceOption) => (
@@ -415,6 +443,7 @@ class SalongListPage extends Component {
                             <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
                         </div>
                     ))}
+                    {this.salongsFilter(this.state.salongs, this.state.filters).length === 0 && <div style={{textAlign: 'center'}}>Denna sökning gav ingen träff</div>}
                     </div>
                 </div>
                 {this.state.loading && <div style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)'}}>
