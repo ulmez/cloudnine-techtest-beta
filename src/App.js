@@ -19,7 +19,7 @@ class App extends Component {
               classNames={'fade'}
             >
               <Switch location={location}>
-              <Route exact path="/first" component={FirstPage} />
+                <Route exact path="/first" component={FirstPage} />
                 <Route exact path="/second" component={SecondPage} />
                 <Route exact path="/salonglist" component={SalongListPage} />
                 <Route exact path="/salonginfo" component={SalongInfoPage} />
