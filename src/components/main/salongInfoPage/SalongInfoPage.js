@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import { getSerieOfIconsOnAverageGrade } from '../../../helpers/collection';
 import defaultSalongBackground from '../../../images/default-salong-background.svg';

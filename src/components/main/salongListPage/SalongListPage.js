@@ -302,12 +302,12 @@ class SalongListPage extends Component {
                     <div className="salong-list-page padding-10-left line">
                         <div className={this.state.filtersVisible ? 'salong-list-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                             <div className="salong-list-page filter-checkbox-container">
-                                <div style={{paddingBottom: '10px'}}>Val av filter</div>
+                                <div className="salong-list-page padding-10-bottom">Val av filter</div>
                                 <div><input type="checkbox" onClick={() => this.markedType(this.state.checkboxType)} />Typ</div>
-                                <div style={{paddingBottom: '10px'}}><input type="checkbox" onClick={() => this.markedPrice(this.state.checkboxPrice)} />Pris</div>
+                                <div className="salong-list-page padding-10-bottom"><input type="checkbox" onClick={() => this.markedPrice(this.state.checkboxPrice)} />Pris</div>
                             </div>
-                            {this.state.checkboxType && <div style={{paddingRight: '10px'}}>
-                                <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
+                            {this.state.checkboxType && <div className="salong-list-page padding-10-right">
+                                <hr className="salong-list-page hr-design" />
                                 <div className="salong-list-page option-container">
                                     <div>{this.state.selectedTypeOption.text}</div>
                                     <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.typeAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.toggleType}></span></div>
@@ -321,8 +321,8 @@ class SalongListPage extends Component {
                                     <div className="salong-list-page height-10-pixel"></div>
                                 </div>
                             </div>}
-                            {this.state.checkboxPrice && <div style={{paddingRight: '10px'}}>
-                                <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
+                            {this.state.checkboxPrice && <div className="salong-list-page padding-10-right">
+                                <hr className="salong-list-page hr-design" />
                                 <div className="salong-list-page option-container">
                                     <div>{this.state.selectedPriceOption.text}</div>
                                     <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.priceAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.togglePrice}></span></div>
@@ -339,42 +339,42 @@ class SalongListPage extends Component {
                             
                         </div>
                     </div>
-                    <div style={{paddingTop: '10px'}}>
+                    <div className="salong-list-page padding-10-top">
                     {this.salongsFilter(this.state.salongs, this.state.filters).map((salong) => (
-                        <div key={salong._id} className="salong-list-page" style={{padding: '10px'}}>
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <div>
-                                <div style={{display: 'flex'}}>
-                                <div style={{fontWeight: '400', paddingRight: '20px'}}>12.00</div>
+                        <div key={salong._id} className="salong-list-page padding-10">
+                            <div className="salong-list-page salong-container">
                                 <div>
-                                    <div style={{fontFamily: 'millerBannerLight', fontSize: '20px', paddingLeft: '2px'}}>{salong.name}</div>
-                                    <div style={{paddingTop: '5px', paddingBottom: '5px'}} className="salong-list-page icon-star-design">
-                                        {getSerieOfIconsOnAverageGrade(salong.grades).map((icon, index) => (
-                                            <span key={index} className={icon} style={{padding: '2px'}}></span>
-                                        ))}
-                                        <label style={{fontSize: '11px', color: '#656565', paddingLeft: '8px'}}>({salong.grades.length})</label>
+                                    <div className="salong-list-page flex-display">
+                                        <div className="salong-list-page bolder-font padding-20-right">12.00</div>
+                                        <div>
+                                            <div className="salong-list-page salong-name">{salong.name}</div>
+                                            <div className="salong-list-page icon-star-design padding-5-top-5-bottom">
+                                                {getSerieOfIconsOnAverageGrade(salong.grades).map((icon, index) => (
+                                                    <span key={index} className="salong-list-page padding-2"><span className={icon}></span></span>
+                                                ))}
+                                                <label className="salong-list-page vote-size">({salong.grades.length})</label>
+                                            </div>
+                                            <div className="salong-list-page street-address">{salong.address.street} {salong.address.street_number}</div>
+                                        </div>
                                     </div>
-                                    <div style={{color: '#656565', paddingBottom: '10px', paddingLeft: '2px'}}>{salong.address.street} {salong.address.street_number}</div>
                                 </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{display: 'flex'}}>
                                 <div>
-                                    <div style={{fontWeight: '400'}}>{salong.price} kr</div>
-                                    <div style={{fontSize: '13px', color: '#656565', paddingTop: '10px'}}>{salong.time}</div>
+                                    <div className="salong-list-page flex-display">
+                                        <div>
+                                            <div className="salong-list-page bolder-font">{salong.price} kr</div>
+                                            <div className="salong-list-page salong-time">{salong.time}</div>
+                                        </div>
+                                        <div className="salong-list-page icon-arrow-vertical-design padding-20-left-15-top"><span className="fa fa-angle-right" onClick={() => this.getToOtherPage(salong)}></span></div>
+                                    </div>
                                 </div>
-                                <div className="salong-list-page icon-arrow-vertical-design" style={{paddingLeft: '20px', paddingTop: '15px'}}><span className="fa fa-angle-right" onClick={() => this.getToOtherPage(salong)}></span></div>
                             </div>
-                            </div>
-                            </div>
-                            <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
+                            <hr className="salong-list-page hr-design" />
                         </div>
                     ))}
-                    {this.salongsFilter(this.state.salongs.length > 0 && this.state.salongs, this.state.filters).length === 0 && <div style={{textAlign: 'center'}}>Denna sökning gav ingen träff</div>}
+                    {this.salongsFilter(this.state.salongs.length > 0 && this.state.salongs, this.state.filters).length === 0 && <div className="salong-list-page align-center">Denna sökning gav ingen träff</div>}
                     </div>
                 </div>
-                {this.state.loading && <div style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)'}}>
+                {this.state.loading && <div className="salong-list-page loader-icon">
                     <CircleLoader
                         sizeUnit={"px"}
                         size={150}

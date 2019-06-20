@@ -61,6 +61,35 @@
   padding-bottom: 10px;
 }
 
+.salong-list-page.salong-name {
+  font-family: millerBannerLight;
+  font-size: 20px;
+  padding-left: 2px;
+}
+
+.salong-list-page.vote-size {
+  font-size: 11px;
+  color: #656565;
+  padding-left: 8px;
+}
+
+.salong-list-page.street-address {
+  color: #656565;
+  padding-bottom: 10px;
+  padding-left: 2px;
+}
+
+.salong-list-page.salong-time {
+  font-size: 13px;
+  color: #656565;
+  padding-top: 10px;
+}
+
+.salong-list-page.salong-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .salong-list-page.filter-checkbox-container {
   padding-top: 10px;
 }
@@ -69,12 +98,58 @@
   overflow: hidden;
 }
 
+.salong-list-page.bolder-font {
+  font-weight: 400;
+}
+
+.salong-list-page.flex-display {
+  display: flex;
+}
+
+.salong-list-page.padding-10 {
+  padding: 10px;
+}
+
+.salong-list-page.padding-2 {
+  padding: 2px;
+}
+
 .salong-list-page.padding-10-left {
   padding-left: 10px;
 }
 
+.salong-list-page.padding-10-right {
+  padding-right: 10px;
+}
+
+.salong-list-page.padding-20-right {
+  padding-right: 20px;
+}
+
+.salong-list-page.padding-10-bottom {
+  padding-bottom: 10px;
+}
+
+.salong-list-page.padding-10-top {
+  padding-top: 10px;
+}
+
 .salong-list-page.height-10-pixel {
   height: 10px;
+}
+
+.salong-list-page.padding-5-top-5-bottom {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.salong-list-page.padding-20-left-15-top {
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+.salong-list-page.align-center {
+  text-align: center;
 }
 
 .salong-list-page.icon-arrow-vertical-design {
@@ -94,4 +169,17 @@
 .salong-list-page.icon-star-design {
   font-size: 10px;
   color: #B69F58;
+}
+
+.salong-list-page.hr-design {
+  background-color: #D8D8D8;
+  height: 1px;
+  border: 0;
+}
+
+.salong-list-page.loader-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
