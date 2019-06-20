@@ -3,6 +3,15 @@
     src: url(../../../fonts/MillerBannerLight.otf);
 }
 
+.salong-info-page.background-design {
+    padding: 10px;
+    border: 1px solid black;
+    background-image: url('../../../images/default-salong-background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px -94px 43px -49px rgba(0,0,0,0.9);
+}
+
 .salong-info-page.type-header {
     font-family: millerBannerLight;
     font-size: 22px;
