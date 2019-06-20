@@ -176,26 +176,12 @@ class SalongListPage extends Component {
     }
 
     priceChoice(item) {
-        // console.log(this.state.filters);
-
         const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
             
         filtersTemp.price = {
             start: item.start,
             end: item.end
         };
-
-        // const filtersTemp = {
-        //     price: {
-        //         start: item.start,
-        //         end: item.end
-        //     },
-        //     type: {
-        //         text: this.state.filters.type.text
-        //     }
-        // };
-
-        // console.log(filtersTemp.type);
 
         this.setState({
             selectedPriceOption: {
@@ -215,15 +201,6 @@ class SalongListPage extends Component {
             text: ''
         }
     }) {
-        
-        // console.log(Object.keys(filters));
-
-        
-
-        // Object.keys(filters).map((filterName) => {
-        //     console.log(filters[filterName]);
-        // });
-
         let salongsTemp = salongs;
 
         if(filters.price.start !== '') {
@@ -238,50 +215,15 @@ class SalongListPage extends Component {
             });
         }
 
-        // salongsTemp.forEach((t) => {
-        //     console.log(t.types.indexOf(filters.type.text));
-        //     if(filters.type.text !== '') {
-
-        //     }
-        // });
-
-        // salongsTemp = _.filter(salongsTemp, (o) => { 
-        //     return (o.price >= filters.price.start && o.price <= filters.price.end);
-        // });
-
         return salongsTemp;
-
-        // return _.filter(salongs, (o) => { 
-        //     return (o.price >= filters.price.start && o.price <= filters.price.end);
-        // });
     }
 
     typeChoice(item) {
-        // console.log(id);
-        // console.log(item);
-        // console.log(this.state.filters.price.start);
-        // console.log(this.state.filters.price.end);
-        // console.log(this.state.selectedPriceOption.text);
-        // console.log(item.textEng);
-        // console.log(this.state.filters);
-
         const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
 
         filtersTemp.type = {
             text: item.textEng
         };
-        
-        // const filtersTemp = {
-        //     price: {
-        //         start: this.state.filters.price.start,
-        //         end: this.state.filters.price.end
-        //     },
-        //     type: {
-        //         text: item.textEng
-        //     }
-        // };
-
-        // console.log(filtersTemp);
 
         this.setState({
             selectedTypeOption: {
@@ -293,7 +235,6 @@ class SalongListPage extends Component {
     }
 
     markedType(booleanValue) {
-        // console.log(e.target.value);
         if(booleanValue) {
             const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
             
@@ -318,7 +259,6 @@ class SalongListPage extends Component {
     }
 
     markedPrice(booleanValue) {
-        // console.log(e.target.value);
         if(booleanValue) {
             console.log(this.state.filters.price);
 
@@ -329,10 +269,6 @@ class SalongListPage extends Component {
                 start: ''
             };
 
-            // this.state.filters.price = {
-            //     end: '',
-            //     start: ''
-            // };
             this.setState({
                 checkboxPrice: false,
                 selectedPriceOption: {
@@ -350,18 +286,10 @@ class SalongListPage extends Component {
     }
 
     getToOtherPage(item) {
-        // console.log('Test');
-        // this.props.history.push("/salonginfo");
         this.props.history.push("/salonginfo", { ...item });
-        // const state = this.props.location.state
     }
 
     render() {
-        // console.log(this.state.checkboxType);
-        // console.log(this.state.checkboxPrice);
-        // console.log(this.state.selectedTypeOption);
-        // console.log(this.state.selectedPriceOption);
-        // console.log(this.state.filters);
         console.log(this.salongsFilter(this.state.salongs, this.state.filters));
         return (
             <div>
@@ -436,14 +364,14 @@ class SalongListPage extends Component {
                                     <div style={{fontWeight: '400'}}>{salong.price} kr</div>
                                     <div style={{fontSize: '13px', color: '#656565', paddingTop: '10px'}}>{salong.time}</div>
                                 </div>
-                                <div className="salong-list-page icon-arrow-vertical-design" style={{paddingLeft: '20px', paddingTop: '15px'}}>{/*<Link to="/salonginfo">*/}<span className="fa fa-angle-right" onClick={() => this.getToOtherPage(salong)}></span>{/*</Link>*/}</div>
+                                <div className="salong-list-page icon-arrow-vertical-design" style={{paddingLeft: '20px', paddingTop: '15px'}}><span className="fa fa-angle-right" onClick={() => this.getToOtherPage(salong)}></span></div>
                             </div>
                             </div>
                             </div>
                             <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
                         </div>
                     ))}
-                    {this.salongsFilter(this.state.salongs, this.state.filters).length === 0 && <div style={{textAlign: 'center'}}>Denna sökning gav ingen träff</div>}
+                    {this.salongsFilter(this.state.salongs.length > 0 && this.state.salongs, this.state.filters).length === 0 && <div style={{textAlign: 'center'}}>Denna sökning gav ingen träff</div>}
                     </div>
                 </div>
                 {this.state.loading && <div style={{position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)'}}>
@@ -458,7 +386,5 @@ class SalongListPage extends Component {
         );
     }
 }
-
-// export default SalongListPage;
 
 export default withRouter(SalongListPage);

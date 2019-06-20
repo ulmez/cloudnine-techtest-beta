@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import SecondPage from './components/secondPage/SecondPage';
-import FirstPage from './components/firstPage/FirstPage';
 import SalongListPage from './components/main/salongListPage/SalongListPage';
 import SalongInfoPage from './components/main/salongInfoPage/SalongInfoPage';
 import './App.scss';
@@ -19,8 +17,6 @@ class App extends Component {
               classNames={'fade'}
             >
               <Switch location={location}>
-                <Route exact path="/first" component={FirstPage} />
-                <Route exact path="/second" component={SecondPage} />
                 <Route exact path="/salonglist" component={SalongListPage} />
                 <Route exact path="/salonginfo" component={SalongInfoPage} />
               </Switch>
