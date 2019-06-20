@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 import { CircleLoader } from 'react-spinners';
 import { withRouter } from 'react-router-dom';
+import { getSerieOfIconsOnAverageGrade } from '../../../helpers/collection';
 import filterIcon from '../../../images/filter-icon.svg';
 import './SalongListPage.scss';
 
@@ -46,27 +48,42 @@ class SalongListPage extends Component {
             typeOptionTexts: [
                 {
                     id: 1,
-                    text: 'Hår'
+                    text: 'Hår',
+                    textEng: 'hair'
                 },
                 {
                     id: 2,
-                    text: 'Naglar'
+                    text: 'Naglar',
+                    textEng: 'nail'
                 },
                 {
                     id: 3,
-                    text: 'Hud'
+                    text: 'Hud',
+                    textEng: 'skin'
                 },
                 {
                     id: 4,
-                    text: 'Massage'
+                    text: 'Massage',
+                    textEng: 'massage'
                 },
                 {
                     id: 5,
-                    text: 'Ansikte'
+                    text: 'Ansikte',
+                    textEng: 'face'
                 }
             ],
             salongs: [],
-            loading: true
+            loading: true,
+            gradeIcons: [],
+            filters: {
+                price: {
+                    start: '',
+                    end: ''
+                },
+                type: {
+                    text: ''
+                }
+            }
         };
 
         this.toggleFilters = this.toggleFilters.bind(this);
@@ -131,36 +148,138 @@ class SalongListPage extends Component {
     }
 
     priceChoice(item) {
-        // console.log(id);
-        console.log(item);
+        // console.log(this.state.filters);
+
+        const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
+            
+        filtersTemp.price = {
+            start: item.start,
+            end: item.end
+        };
+
+        // const filtersTemp = {
+        //     price: {
+        //         start: item.start,
+        //         end: item.end
+        //     },
+        //     type: {
+        //         text: this.state.filters.type.text
+        //     }
+        // };
+
+        // console.log(filtersTemp.type);
+
         this.setState({
             selectedPriceOption: {
                 selected: item.id,
                 text: item.text
-            }
+            },
+            filters: filtersTemp
         });
+    }
+
+    salongsFilter(salongs, filters = {
+        price: {
+            start: '',
+            end: ''
+        },
+        type: {
+            text: ''
+        }
+    }) {
+        
+        // console.log(Object.keys(filters));
+
+        
+
+        // Object.keys(filters).map((filterName) => {
+        //     console.log(filters[filterName]);
+        // });
+
+        let salongsTemp = salongs;
+
+        if(filters.price.start !== '') {
+            salongsTemp = _.filter(salongs, (o) => { 
+                return (o.price >= filters.price.start && o.price <= filters.price.end);
+            });
+        }
+
+        if(filters.type.text !== '') {
+            salongsTemp = _.filter(salongsTemp, (t) => { 
+                return (t.types.indexOf(filters.type.text) > -1);
+            });
+        }
+
+        // salongsTemp.forEach((t) => {
+        //     console.log(t.types.indexOf(filters.type.text));
+        //     if(filters.type.text !== '') {
+
+        //     }
+        // });
+
+        // salongsTemp = _.filter(salongsTemp, (o) => { 
+        //     return (o.price >= filters.price.start && o.price <= filters.price.end);
+        // });
+
+        return salongsTemp;
+
+        // return _.filter(salongs, (o) => { 
+        //     return (o.price >= filters.price.start && o.price <= filters.price.end);
+        // });
     }
 
     typeChoice(item) {
         // console.log(id);
-        console.log(item);
+        // console.log(item);
+        // console.log(this.state.filters.price.start);
+        // console.log(this.state.filters.price.end);
+        // console.log(this.state.selectedPriceOption.text);
+        // console.log(item.textEng);
+        // console.log(this.state.filters);
+
+        const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
+        
+        filtersTemp.type = {
+            text: item.textEng
+        };
+        
+        // const filtersTemp = {
+        //     price: {
+        //         start: this.state.filters.price.start,
+        //         end: this.state.filters.price.end
+        //     },
+        //     type: {
+        //         text: item.textEng
+        //     }
+        // };
+
+        // console.log(filtersTemp);
+
         this.setState({
             selectedTypeOption: {
                 selected: item.id,
                 text: item.text
-            }
+            },
+            filters: filtersTemp
         });
     }
 
     markedType(booleanValue) {
         // console.log(e.target.value);
         if(booleanValue) {
+            const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
+            
+            filtersTemp.type = {
+                text: ''
+            };
+
             this.setState({
                 checkboxType: false,
                 selectedTypeOption: {
                     selected: 0,
                     text: 'Ingen typ vald ännu'
-                }
+                },
+                filters: filtersTemp
             });
         }
         else {
@@ -173,12 +292,26 @@ class SalongListPage extends Component {
     markedPrice(booleanValue) {
         // console.log(e.target.value);
         if(booleanValue) {
+            console.log(this.state.filters.price);
+
+            const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
+
+            filtersTemp.price = {
+                end: '',
+                start: ''
+            };
+
+            // this.state.filters.price = {
+            //     end: '',
+            //     start: ''
+            // };
             this.setState({
                 checkboxPrice: false,
                 selectedPriceOption: {
                     selected: 0,
                     text: 'Ingen priskategori vald ännu'
-                }
+                },
+                filters: filtersTemp
             });
         }
         else {
@@ -196,10 +329,12 @@ class SalongListPage extends Component {
     }
 
     render() {
-        console.log(this.state.checkboxType);
-        console.log(this.state.checkboxPrice);
-        console.log(this.state.selectedTypeOption);
-        console.log(this.state.selectedPriceOption);
+        // console.log(this.state.checkboxType);
+        // console.log(this.state.checkboxPrice);
+        // console.log(this.state.selectedTypeOption);
+        // console.log(this.state.selectedPriceOption);
+        // console.log(this.state.filters);
+        console.log(this.salongsFilter(this.state.salongs, this.state.filters));
         return (
             <div>
                 <div className="page">
@@ -249,23 +384,21 @@ class SalongListPage extends Component {
                         </div>
                     </div>
                     <div style={{paddingTop: '10px'}}>
-                    {this.state.salongs.map((salong) => (
+                    {this.salongsFilter(this.state.salongs, this.state.filters).map((salong) => (
                         <div key={salong._id} className="salong-list-page" style={{padding: '10px'}}>
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                             <div>
                                 <div style={{display: 'flex'}}>
                                 <div style={{fontWeight: '400', paddingRight: '20px'}}>12.00</div>
                                 <div>
-                                    <div style={{fontFamily: 'millerBannerLight', fontSize: '20px'}}>{salong.name}</div>
+                                    <div style={{fontFamily: 'millerBannerLight', fontSize: '20px', paddingLeft: '2px'}}>{salong.name}</div>
                                     <div style={{paddingTop: '5px', paddingBottom: '5px'}} className="salong-list-page icon-star-design">
-                                        <span className="fa fa-star" style={{paddingTop: '2px', paddingBottom: '2px', paddingRight: '2px'}}></span>
-                                        <span className="fa fa-star" style={{padding: '2px'}}></span>
-                                        <span className="fa fa-star" style={{padding: '2px'}}></span>
-                                        <span className="fa fa-star" style={{padding: '2px'}}></span>
-                                        <span className="fa fa-star-o" style={{paddingTop: '2px', paddingLeft: '2px', paddingBottom: '2px', paddingRight: '8px'}}></span>
-                                        <label style={{fontSize: '11px', color: '#656565'}}>(32)</label>
+                                        {getSerieOfIconsOnAverageGrade(salong.grades).map((icon, index) => (
+                                            <span key={index} className={icon} style={{padding: '2px'}}></span>
+                                        ))}
+                                        <label style={{fontSize: '11px', color: '#656565', paddingLeft: '8px'}}>({salong.grades.length})</label>
                                     </div>
-                                    <div style={{color: '#656565', paddingBottom: '10px'}}>{salong.address.street} {salong.address.street_number}</div>
+                                    <div style={{color: '#656565', paddingBottom: '10px', paddingLeft: '2px'}}>{salong.address.street} {salong.address.street_number}</div>
                                 </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import moment from 'moment';
+import { getSerieOfIconsOnAverageGrade } from '../../../helpers/collection';
 import defaultSalongBackground from '../../../images/default-salong-background.svg';
 import mapMarkerAlt from '../../../images/map-marker-alt.svg';
 import angleLeft from '../../../images/angle-left.svg';
@@ -34,44 +35,10 @@ class SalongInfoPage extends Component {
     }
 
     componentDidMount() {
-        // console.log(moment().format('dddd').toLowerCase());
-        console.log(this.props.location.state.grades);
-
-        let gradeAverageTemp = 0;
-
-        this.props.location.state.grades.map((grade) => {
-            // console.log(grade.grade);
-            gradeAverageTemp += grade.grade;
-        });
-
-        gradeAverageTemp = gradeAverageTemp / this.props.location.state.grades.length;
-
-        const gradeAverageInteger = Math.floor(gradeAverageTemp);
-
-        console.log(gradeAverageTemp);
-        console.log(gradeAverageInteger);
-
-        const icons = [];
-        let onetimeCheck = true;
-
-        for(let i = 0; i < 5; i++) {
-            if(gradeAverageInteger > i) {
-                icons.push('fa fa-star');
-            }
-            else if(gradeAverageTemp !== gradeAverageInteger && onetimeCheck) {
-                onetimeCheck = false;
-                icons.push('fa fa-star-half-o');
-            }
-            else {
-                icons.push('fa fa-star-o');
-            }
-        }
-
-        console.log(icons);
+        // console.log(getSerieOfIconsOnAverageGrade(this.props.location.state.grades));
 
         this.setState({
-            // salong: this.props.location.state,
-            gradeIcons: icons
+            gradeIcons: getSerieOfIconsOnAverageGrade(this.props.location.state.grades)
         });
     }
 
@@ -134,7 +101,7 @@ class SalongInfoPage extends Component {
                     <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
                     <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={clockIcon} alt="Clock-icon" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span><span onClick={this.toggleFilters} className="salong-info-page icon-design fa fa-angle-down" style={{border: '0px solid black', display: 'table-cell', verticalAlign: 'middle', paddingLeft: '10px'}}></span></div>
                     <div className={this.state.filtersVisible ? 'salong-info-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
-                        <div>
+                        <div style={{paddingTop: '5px'}}>
                             {Object.keys(this.props.location.state.opening_time).map((day) => (
                                 <div key={day} style={{display: 'flex', justifyContent: 'flex-start'}}>
                                     <div style={{width: '70px', paddingLeft: '25px'}}>{this.state.weekDay[day]}</div>
