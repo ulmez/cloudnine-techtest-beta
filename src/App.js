@@ -17,7 +17,7 @@ class App extends Component {
               classNames={'fade'}
             >
               <Switch location={location}>
-                <Route exact path="/salonglist" component={SalongListPage} />
+                <Route exact path="/" component={SalongListPage} />
                 <Route exact path="/salonginfo" component={SalongInfoPage} />
               </Switch>
             </CSSTransition>

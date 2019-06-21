@@ -34,12 +34,15 @@ class SalongInfoPage extends Component {
     }
 
     componentDidMount() {
+        // Store the grade icons used to show right star icon for the salon grade
         this.setState({
             gradeIcons: getSerieOfIconsOnAverageGrade(this.props.location.state.grades)
         });
     }
 
+    // Used to show or hide the filter options and set the right icon based on that
     toggleFilters() {
+        // Icon part
         if(this.state.filterAngleDown) {
             this.setState({
                 filterAngleDown: false
@@ -53,6 +56,7 @@ class SalongInfoPage extends Component {
             }, 200);
         }
 
+        // Show hide part
         if(this.state.filtersVisible) {
             this.setState({
                 filtersVisible: false
@@ -65,8 +69,9 @@ class SalongInfoPage extends Component {
         }
     }
 
+    // Send to salong list page
     backToList() {
-        this.props.history.push("/salonglist");
+        this.props.history.push("/");
     }
 
     render() {
