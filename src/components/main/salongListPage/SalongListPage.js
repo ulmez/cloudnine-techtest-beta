@@ -97,9 +97,9 @@ class SalongListPage extends Component {
     }
 
     componentDidMount() {
+        // Get all the salongs from the API
         axios.get(`${process.env.REACT_APP_API_URL}/salongs`)
         .then((result) => {
-            console.log(result.data);
             this.setState({
                 salongs: result.data,
                 loading: false
@@ -110,6 +110,7 @@ class SalongListPage extends Component {
         });
     }
 
+    // Used to show or hide the filter
     toggleFilters() {
         if(this.state.filtersVisible) {
             this.setState({
@@ -123,7 +124,9 @@ class SalongListPage extends Component {
         }
     }
 
+    // Used to show or hide the price options and set the right icon based on that
     togglePrice() {
+        // Icon part
         if(this.state.priceAngleDown) {
             this.setState({
                 priceAngleDown: false
@@ -137,6 +140,7 @@ class SalongListPage extends Component {
             }, 200);
         }
 
+        // Show hide part
         if(this.state.priceVisible) {
             this.setState({
                 priceVisible: false
@@ -149,7 +153,9 @@ class SalongListPage extends Component {
         }
     }
 
+    // Used to show or hide the type options and set the right icon based on that
     toggleType() {
+        // Icon part
         if(this.state.typeAngleDown) {
             this.setState({
                 typeAngleDown: false
@@ -163,6 +169,7 @@ class SalongListPage extends Component {
             }, 200);
         }
         
+        // Show hide part
         if(this.state.typeVisible) {
             this.setState({
                 typeVisible: false
@@ -175,6 +182,7 @@ class SalongListPage extends Component {
         }
     }
 
+    // Save the value selected from the price choice list
     priceChoice(item) {
         const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
             
@@ -192,32 +200,7 @@ class SalongListPage extends Component {
         });
     }
 
-    salongsFilter(salongs, filters = {
-        price: {
-            start: '',
-            end: ''
-        },
-        type: {
-            text: ''
-        }
-    }) {
-        let salongsTemp = salongs;
-
-        if(filters.price.start !== '') {
-            salongsTemp = _.filter(salongs, (o) => { 
-                return (o.price >= filters.price.start && o.price <= filters.price.end);
-            });
-        }
-
-        if(filters.type.text !== '') {
-            salongsTemp = _.filter(salongsTemp, (t) => { 
-                return (t.types.indexOf(filters.type.text) > -1);
-            });
-        }
-
-        return salongsTemp;
-    }
-
+    // Save the value selected from the type choice list
     typeChoice(item) {
         const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
 
@@ -234,6 +217,36 @@ class SalongListPage extends Component {
         });
     }
 
+    // Filter to show only salongs based on choices in the filter
+    salongsFilter(salongs, filters = {
+        price: {
+            start: '',
+            end: ''
+        },
+        type: {
+            text: ''
+        }
+    }) {
+        let salongsTemp = salongs;
+
+        // Filter on price
+        if(filters.price.start !== '') {
+            salongsTemp = _.filter(salongs, (o) => { 
+                return (o.price >= filters.price.start && o.price <= filters.price.end);
+            });
+        }
+
+        // Filter on type
+        if(filters.type.text !== '') {
+            salongsTemp = _.filter(salongsTemp, (t) => { 
+                return (t.types.indexOf(filters.type.text) > -1);
+            });
+        }
+
+        return salongsTemp;
+    }
+
+    // Remove value for type filter if checkbox not selected
     markedType(booleanValue) {
         if(booleanValue) {
             const filtersTemp = JSON.parse(JSON.stringify(this.state.filters));
@@ -258,6 +271,7 @@ class SalongListPage extends Component {
         }
     }
 
+    // Remove value for price filter if checkbox not selected
     markedPrice(booleanValue) {
         if(booleanValue) {
             console.log(this.state.filters.price);
@@ -285,11 +299,13 @@ class SalongListPage extends Component {
         }
     }
 
+    // Send to salong info page and also store salon object values for the clicked salon there
     getToOtherPage(item) {
         this.props.history.push("/salonginfo", { ...item });
     }
 
     render() {
+        // Used to get which salons are shown in the list based on the filtering
         console.log(this.salongsFilter(this.state.salongs, this.state.filters));
         return (
             <div>
@@ -336,7 +352,6 @@ class SalongListPage extends Component {
                                     <div className="salong-list-page height-10-pixel"></div>
                                 </div>
                             </div>}
-                            
                         </div>
                     </div>
                     <div className="salong-list-page padding-10-top">
