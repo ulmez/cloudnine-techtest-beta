@@ -74,46 +74,59 @@ class SalongInfoPage extends Component {
         return (
             <div className="page">
                 <div className="salong-info-page background-design">
-                    <div style={{height: '125px', border: '0px solid black', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-                        <div style={{border: '0px solid black', color: 'white'}}><span onClick={this.backToList}><img src={angleLeft} alt="Angle-left" /></span></div>
-                        <div style={{border: '0px solid black', color: 'white'}}><img src={heartIcon} alt="Heart-icon" /></div>
+                    <div className="salong-info-page salong-image-top-placeholder">
+                        <div><span onClick={this.backToList}><img src={angleLeft} alt="Angle-left" /></span></div>
+                        <div><img src={heartIcon} alt="Heart-icon" /></div>
                     </div>
-                    <div style={{height: '125px', border: '0px solid black', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end'}}>
+                    <div className="salong-info-page salong-image-bottom-placeholder">
                         <div>
-                            <div className="salong-info-page type-header" style={{border: '0px solid black', color: 'white'}}>{this.props.location.state.name}</div>
-                            <div style={{border: '0px solid white', color: '#B69F58', fontSize: '14px', paddingTop: '5px'}}>
+                            <div className="salong-info-page salong-name-header">{this.props.location.state.name}</div>
+                            <div className="salong-info-page grade-placeholder">
                                 {this.state.gradeIcons.map((icon, index) => (
                                     <span key={index} className={icon} style={{width: '17px'}}></span>
                                 ))}
-                                <span style={{color: 'white', fontSize: '13px', paddingLeft: '8px'}}>({this.props.location.state.grades.length})</span>
+                                <span className="salong-info-page vote-size">({this.props.location.state.grades.length})</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{display: 'flex', height: '50px', border: '0px solid black', fontWeight: '400'}}>
-                    <div style={{borderBottom: '2px solid #B69F58', flex: '1', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}><div style={{border: '0px solid black'}}>Info</div></div>
-                    <div style={{borderBottom: '2px solid white', flex: '1', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}><div style={{border: '0px solid black'}}>Schema</div></div>
+                <div className="salong-info-page info-schema-placeholder">
+                    <div className="salong-info-page info-underline-design">Info</div>
+                    <div className="salong-info-page schema-underline-design">Schema</div>
                 </div>
-                <div style={{border: '0px solid black', padding: '10px'}}>
-                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={mapMarkerAlt} alt="Map-marker-alt" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{this.props.location.state.address.street} {this.props.location.state.address.street_number}, {this.props.location.state.address.postcode} {this.props.location.state.address.city}</span></div>
-                    <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
-                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={clockIcon} alt="Clock-icon" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span><span onClick={this.toggleFilters} className={this.state.filterAngleDown ? 'salong-info-page icon-design fa fa-angle-down' : 'salong-info-page icon-design fa fa-angle-up' } style={{border: '0px solid black', display: 'table-cell', verticalAlign: 'middle', paddingLeft: '10px'}}></span></div>
+                <div className="salong-info-page padding-10">
+                    <div>
+                        <span className="salong-info-page icon-width"><img src={mapMarkerAlt} alt="Map-marker-alt" /></span>
+                        <span className="salong-info-page table-cell">{this.props.location.state.address.street} {this.props.location.state.address.street_number}, {this.props.location.state.address.postcode} {this.props.location.state.address.city}</span>
+                    </div>
+                    <hr className="salong-info-page hr-design" />
+                    <div>
+                        <span className="salong-info-page icon-width"><img src={clockIcon} alt="Clock-icon" /></span>
+                        <span className="salong-info-page table-cell">{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span>
+                        <span onClick={this.toggleFilters} className={this.state.filterAngleDown ? 'salong-info-page icon-design fa fa-angle-down' : 'salong-info-page icon-design fa fa-angle-up' }></span>
+                    </div>
                     <div className={this.state.filtersVisible ? 'salong-info-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
-                        <div style={{paddingTop: '5px'}}>
+                        <div className="salong-info-page padding-5-top">
                             {Object.keys(this.props.location.state.opening_time).map((day) => (
-                                <div key={day} style={{display: 'flex', justifyContent: 'flex-start'}}>
-                                    <div style={{width: '70px', paddingLeft: '25px'}}>{this.state.weekDay[day]}</div>
+                                <div key={day} className="salong-info-page day-container">
+                                    <div className="salong-info-page day-placement">{this.state.weekDay[day]}</div>
                                     {typeof this.props.location.state.opening_time[day] === 'object' ? <div>{this.props.location.state.opening_time[day].open} - {this.props.location.state.opening_time[day].close}</div> : <div>Stängt</div>}
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
-                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={phoneIcon} alt="Map-marker-alt" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{this.props.location.state.phone}</span></div>
-                    <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
-                    <div style={{height: '20px', border: '0px solid black', display: 'table'}}><span style={{display: 'table-cell', verticalAlign: 'bottom', width: '25px'}}><img src={globeIcon} alt="Map-marker-alt" /></span><span style={{display: 'table-cell', verticalAlign: 'middle'}}>{this.props.location.state.site_address}</span></div>
-                    <hr style={{backgroundColor: '#D8D8D8', height: '1px', border: '0'}} />
-                    <div style={{paddingTop: '5px'}}>{this.props.location.state.about}</div>
+                    <hr className="salong-info-page hr-design" />
+                    <div>
+                        <span className="salong-info-page icon-width"><img src={phoneIcon} alt="Phone-icon" /></span>
+                        <span className="salong-info-page table-cell">{this.props.location.state.phone}</span>
+                    </div>
+                    <hr className="salong-info-page hr-design" />
+                    <div>
+                        <span className="salong-info-page icon-width"><img src={globeIcon} alt="Globe-icon" /></span>
+                        <span className="salong-info-page table-cell">{this.props.location.state.site_address}</span>
+                    </div>
+                    <hr className="salong-info-page hr-design" />
+                    <div className="salong-info-page padding-5-top">{this.props.location.state.about}</div>
                 </div>
             </div>
         );

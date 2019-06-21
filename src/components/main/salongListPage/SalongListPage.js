@@ -350,7 +350,7 @@ class SalongListPage extends Component {
                                             <div className="salong-list-page salong-name">{salong.name}</div>
                                             <div className="salong-list-page icon-star-design padding-5-top-5-bottom">
                                                 {getSerieOfIconsOnAverageGrade(salong.grades).map((icon, index) => (
-                                                    <span key={index} className="salong-list-page padding-2"><span className={icon}></span></span>
+                                                    <span key={index} className={icon} style={{padding: '2px'}}></span>
                                                 ))}
                                                 <label className="salong-list-page vote-size">({salong.grades.length})</label>
                                             </div>

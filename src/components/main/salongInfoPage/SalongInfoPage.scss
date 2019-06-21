@@ -1,71 +1,139 @@
 @font-face {
-    font-family: millerBannerLight;
-    src: url(../../../fonts/MillerBannerLight.otf);
+  font-family: millerBannerLight;
+  src: url(../../../fonts/MillerBannerLight.otf);
 }
 
 .salong-info-page.background-design {
-    padding: 10px;
-    border: 1px solid black;
-    background-image: url('../../../images/default-salong-background.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: inset 0px -94px 43px -49px rgba(0,0,0,0.9);
+  padding: 10px;
+  border: 1px solid black;
+  background-image: url('../../../images/default-salong-background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0px -94px 43px -49px rgba(0,0,0,0.9);
 }
 
-.salong-info-page.type-header {
-    font-family: millerBannerLight;
-    font-size: 22px;
-  }
+.salong-info-page.salong-name-header {
+  font-family: millerBannerLight;
+  font-size: 22px;
+  color: white;
+}
 
 .salong-info-page.icon-design {
-    font-size: 23px;
-    line-height: 10px;
-    color: #B69F58;
-    -webkit-text-stroke: 1px white;
+  display: table-cell;
+  font-size: 23px;
+  line-height: 10px;
+  color: #B69F58;
+  vertical-align: middle;
+  padding-left: 10px;
+  -webkit-text-stroke: 1px white;
 }
 
 .salong-info-page.icon-design-bigger {
-    font-size: 40px;
-    line-height: 50px;
-    color: white;
-    -webkit-text-stroke: 2px black;
-  }
-
-  .salong-info-page.hide {
-    max-height: 0px;
-     -webkit-transition: max-height .3s ease;
-     -moz-transition: max-height .3s ease;
-     -o-transition: max-height .3s ease;
-     -ms-transition: max-height .3s ease;
-     transition: max-height .3s ease;
+  font-size: 40px;
+  line-height: 50px;
+  color: white;
+  -webkit-text-stroke: 2px black;
 }
 
-  .salong-info-page.show {
-    max-height: 800px;
-      -webkit-transition: max-height 1s ease;
-     -moz-transition: max-height 1s ease;
-     -o-transition: max-height 1s ease;
-     -ms-transition: max-height 1s ease;
-     transition: max-height 1s ease;
-  }
+.salong-info-page.hide{
+  max-height: 0px;
+  -webkit-transition: max-height .3s ease;
+  -moz-transition: max-height .3s ease;
+  -o-transition: max-height .3s ease;
+  -ms-transition: max-height .3s ease;
+  transition: max-height .3s ease;
+}
 
-  .salong-info-page.hide{
-    max-height: 0px;
-     -webkit-transition: max-height .3s ease;
-     -moz-transition: max-height .3s ease;
-     -o-transition: max-height .3s ease;
-     -ms-transition: max-height .3s ease;
-     transition: max-height .3s ease;
-  }
-  .salong-info-page.show{
-    max-height: 800px;
-      -webkit-transition: max-height 1s ease;
-     -moz-transition: max-height 1s ease;
-     -o-transition: max-height 1s ease;
-     -ms-transition: max-height 1s ease;
-     transition: max-height 1s ease;
-  }
+.salong-info-page.show{
+  max-height: 800px;
+  -webkit-transition: max-height 1s ease;
+  -moz-transition: max-height 1s ease;
+  -o-transition: max-height 1s ease;
+  -ms-transition: max-height 1s ease;
+  transition: max-height 1s ease;
+}
 
-  .salong-info-page.overflow-hidden {
-    overflow: hidden;
-  }
+.salong-info-page.salong-image-top-placeholder {
+  display: flex;
+  height: 125px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.salong-info-page.salong-image-bottom-placeholder {
+  display: flex;
+  height: 125px;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.salong-info-page.grade-placeholder {
+  color: #B69F58;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.salong-info-page.vote-size {
+  color: white;
+  font-size: 13px;
+  padding-left: 8px;
+}
+
+.salong-info-page.info-schema-placeholder {
+  display: flex;
+  height: 50px;
+  font-weight: 400;
+}
+
+.salong-info-page.info-underline-design {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #B69F58;
+}
+
+.salong-info-page.schema-underline-design {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid white;
+}
+
+.salong-info-page.day-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.salong-info-page.day-placement {
+  width: 70px;
+  padding-left: 25px;
+}
+
+.salong-info-page.hr-design {
+  background-color: #D8D8D8;
+  height: 1px;
+  border: 0;
+}
+
+.salong-info-page.icon-width {
+  display: table-cell;
+  width: 25px;
+}
+
+.salong-info-page.table-cell {
+  display: table-cell;
+}
+
+.salong-info-page.overflow-hidden {
+  overflow: hidden;
+}
+
+.salong-info-page.padding-10 {
+  padding: 10px;
+}
+
+.salong-info-page.padding-5-top {
+  padding-top: 5px;
+}
