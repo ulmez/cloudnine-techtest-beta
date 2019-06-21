@@ -100,10 +100,10 @@ class SalongInfoPage extends Component {
                         <span className="salong-info-page table-cell">{this.props.location.state.address.street} {this.props.location.state.address.street_number}, {this.props.location.state.address.postcode} {this.props.location.state.address.city}</span>
                     </div>
                     <hr className="salong-info-page hr-design" />
-                    <div>
+                    <div onClick={this.toggleFilters}>
                         <span className="salong-info-page icon-width"><img src={clockIcon} alt="Clock-icon" /></span>
                         <span className="salong-info-page table-cell">{typeof this.props.location.state.opening_time[moment().format('dddd').toLowerCase()] === 'object' ? `Öppet till ${this.props.location.state.opening_time[moment().format('dddd').toLowerCase()].close} idag` : 'Stängt idag'}</span>
-                        <span onClick={this.toggleFilters} className={this.state.filterAngleDown ? 'salong-info-page icon-design fa fa-angle-down' : 'salong-info-page icon-design fa fa-angle-up' }></span>
+                        <span className={this.state.filterAngleDown ? 'salong-info-page icon-design fa fa-angle-down' : 'salong-info-page icon-design fa fa-angle-up' }></span>
                     </div>
                     <div className={this.state.filtersVisible ? 'salong-info-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                         <div className="salong-info-page padding-5-top">

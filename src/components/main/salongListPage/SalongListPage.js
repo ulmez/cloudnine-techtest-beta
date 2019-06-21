@@ -308,9 +308,9 @@ class SalongListPage extends Component {
                             </div>
                             {this.state.checkboxType && <div className="salong-list-page padding-10-right">
                                 <hr className="salong-list-page hr-design" />
-                                <div className="salong-list-page option-container">
+                                <div onClick={this.toggleType} className="salong-list-page option-container">
                                     <div>{this.state.selectedTypeOption.text}</div>
-                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.typeAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.toggleType}></span></div>
+                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.typeAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' }></span></div>
                                 </div>
                                 <div className={this.state.typeVisible ? 'salong-list-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                                     {this.state.typeOptionTexts.map((typeOption) => (
@@ -323,9 +323,9 @@ class SalongListPage extends Component {
                             </div>}
                             {this.state.checkboxPrice && <div className="salong-list-page padding-10-right">
                                 <hr className="salong-list-page hr-design" />
-                                <div className="salong-list-page option-container">
+                                <div onClick={this.togglePrice} className="salong-list-page option-container">
                                     <div>{this.state.selectedPriceOption.text}</div>
-                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.priceAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' } onClick={this.togglePrice}></span></div>
+                                    <div className="salong-list-page icon-arrow-vertical-design-collapsed"><span className={this.state.priceAngleDown ? 'fa fa-angle-down' : 'fa fa-angle-up' }></span></div>
                                 </div>
                                 <div className={this.state.priceVisible ? 'salong-list-page overflow-hidden show' : 'salong-list-page overflow-hidden hide'}>
                                     {this.state.priceOptionTexts.map((priceOption) => (
